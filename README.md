@@ -1,22 +1,72 @@
-# Puppet Talk v0.1
+# Puppet Talk 🎙️📖
 
-A static, mobile-friendly spoken-story-to-comic prototype. No build step or account required.
+**Tell a story. Watch it unfold.**
 
-## Run
+Puppet Talk is an early-stage storytelling experiment that explores a simple idea: **what if the stories we tell children could become comics as we speak?**
 
-From this directory: `python3 -m http.server 8000` then visit `http://localhost:8000` in Chrome or Edge. Or deploy these three web files to Cloudflare Pages, Netlify, or GitHub Pages. Microphone access generally requires HTTPS (localhost is also allowed).
+Designed with parents, guardians, siblings, aunts, uncles and young storytellers in mind, Puppet Talk aims to turn shared storytelling into a visual, imaginative experience.
 
-## Features
+🌐 **Try the prototype:** https://puppet-talk.vercel.app/
 
-- Live speech transcription (Web Speech API), typed fallback
-- 10/15/20-second or manual panel creation
-- Five art styles passed to the AI prompt
-- Character descriptions included in each AI prompt
-- Demo illustrations that work without an API token
-- Optional Hugging Face image-generation API (experimental, subject to model access/CORS)
-- Reorder, regenerate, delete panels
-- Export a standalone HTML comic; open it and Print → Save as PDF
+## How it works
 
-## Important limitations
+1. Give your story a title and choose an illustration style.
+2. Start speaking (in a supported browser) or type your story.
+3. Create panels manually or choose a 10-, 15-, or 20-second interval while narrating.
+4. Add character names and descriptions to guide future illustrations.
+5. Reorder, regenerate or remove panels.
+6. Export your comic as a printable HTML document, which you can save as a PDF from your browser.
 
-Demo mode generates attractive scene cards, not AI interpretations of spoken scenes. AI mode sends transcript/character descriptions to Hugging Face; it requires an access token and a compatible image-generation endpoint, and may fail due to CORS, model availability or billing. This is not a production-ready AI pipeline. Scene extraction is currently a prompt-based text-to-image approach, not a separate Gemini step. Browser speech recognition may transmit audio to a browser provider. No user accounts or server-side data storage are used; panels are lost on refresh unless exported. Do not embed a permanent API token in deployed frontend code. For reliable public AI generation, use a secure serverless proxy with authentication and rate limits.
+## What works in v0.1
+
+- Responsive interface for mobile and desktop
+- Browser speech recognition with a text-entry fallback
+- Manual and timed panel creation
+- Five selectable art styles
+- Character description cards
+- Demo-mode illustrated scene cards without API credentials
+- Panel management and HTML export
+- Experimental Hugging Face image-generation option
+
+## Important: prototype limitations
+
+**The default demo illustrations are decorative scene cards, not AI interpretations of your actual story.** The vision is real-time illustrated storytelling; the current version demonstrates the interaction and workflow rather than delivering that full experience.
+
+The optional Hugging Face mode is experimental. It requires your own API token and suitable model access, and may fail because of CORS restrictions, API availability, rate limits or costs. Art styles and character descriptions are passed as prompt guidance, but character consistency is not guaranteed.
+
+Speech recognition availability depends on your browser, device and permissions; some browsers process audio through an external service. The application currently has no accounts or backend persistence, and stories are lost when the page is refreshed unless exported.
+
+**Do not place API keys in public code or share them with others.** A production version should use a secure backend for image-generation requests.
+
+## Run locally
+
+This is a static HTML/CSS/JavaScript project with no installation or build step.
+
+```bash
+git clone https://github.com/olukoyaiyiola/puppet-talk.git
+cd puppet-talk
+python3 -m http.server 8000
+```
+
+Open http://localhost:8000 in Chrome or Edge. Microphone access usually requires HTTPS or localhost.
+
+## Project files
+
+- `index.html` — application structure
+- `styles.css` — visual design and responsive layout
+- `script.js` — transcription, panel creation, character cards and export
+
+## Where it could go next
+
+- AI-generated scenes grounded in the actual spoken narrative
+- More reliable, consistent characters across panels
+- Editable speech bubbles and comic layouts
+- Secure server-side image generation
+- Story saving, sharing and child-friendly safeguards
+
+## Feedback welcome
+
+This is an experiment in making storytelling more playful and collaborative. Try the prototype and share what worked, what didn't, and what you would love to see.
+
+**Live:** https://puppet-talk.vercel.app/  
+**Source:** https://github.com/olukoyaiyiola/puppet-talk
